@@ -41,7 +41,7 @@ $result = $conn->query($sql);
                   <td>' . $row["sectionID"] .'</td>
                   <td>
       <form method="post" action="instructorstudent.php">
-        <input type="hidden" name="id" value="<?=$row["courseID"]?>" />
+        <input type="hidden" name="id" value="<?=$row["courseID"]?>
         <input type="submit" value="Students" />
       </form>
     </td>
