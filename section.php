@@ -27,14 +27,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     case 'Add':
       $sqlAdd = "insert into section (courseID, sectionID, sectionNumber) value (?,?,?)";
       $stmtAdd = $conn->prepare($sqlAdd);
-      $stmtAdd->bind_param("si", $_POST['sNum'], $_POST['cID'], $_POST['seID']);
+      $stmtAdd->bind_param("sisi", $_POST['cID'], $_POST['seID'], $_POST['sNum']);
       $stmtAdd->execute();
       echo '<div class="alert alert-success" role="alert">New Section added.</div>';
       break;
     case 'Edit':
       $sqlEdit = "update section set sectionNumber=?, courseID=? where sectionID=?";
       $stmtEdit = $conn->prepare($sqlEdit);
-      $stmtEdit->bind_param("sii", $_POST['sNum'], $_POST['cID'], $_POST['seID']);
+      $stmtEdit->bind_param("sisii", $_POST['sNum'], $_POST['cID'], $_POST['seID']);
       $stmtEdit->execute();
       echo '<div class="alert alert-success" role="alert">Section edited.</div>';
       break;
@@ -57,7 +57,10 @@ if ($result->num_rows > 0) {
   while($row = $result->fetch_assoc()) {
 ?>
           
-          <tr> 
+          <tr>
+            <td><?=$row["courseID"]?></td>
+            <td><?=$row["sectionID"]?></td>
+            <td><?=$row["sectionNumber"]?></td>
             <td>
               <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#editSection<?=$row["sectionID"]?>">
                 Edit
@@ -72,14 +75,12 @@ if ($result->num_rows > 0) {
                     <div class="modal-body">
                       <form method="post" action="">
                         <div class="mb-3">
-                          <label for="editSection<?=$row["sectionID"]?>Name" class="form-label">Number</label>
+                          <label for="editSection<?=$row["sectionID"]?>Name" class="form-label">Section Number</label>
                           <input type="text" class="form-control" id="editSection<?=$row["sectionID"]?>Name" aria-describedby="editSection<?=$row["sectionID"]?>Help" name="sNum" value="<?=$row['sectionNumber']?>">
                           <div id="editSection<?=$row["sectionID"]?>Help" class="form-text">Enter the Section's Number.</div>
-                          <div class="mb-3">
-                          
-                          <?php
-                      ?>
-                            </select>
+                          <label for="courseID" class="form-label">Course ID</label>
+                          <input type="text" class="form-control" id="cID" aria-describedby="nameHelp" name="cID" value="<?=$row['courseID']?>">
+                          <div id="nameHelp" class="form-text">Enter the Course's ID</div>                          
                         </div>
                         <input type="hidden" name="seID" value="<?=$row['sectionID']?>">
                         <input type="hidden" name="saveType" value="Edit">
@@ -120,7 +121,7 @@ $conn->close();
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="addSectionLabel">Add Section</h1>
+              <h1 class="modal-title fs-5" id="addSectionLabel">Add Customer</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -129,12 +130,9 @@ $conn->close();
                   <label for="sectionNumber" class="form-label">Section Number</label>
                   <input type="text" class="form-control" id="sNum" aria-describedby="nameHelp" name="sNum">
                   <div id="nameHelp" class="form-text">Enter the Section's Number.</div>
-                  <label for="sectionID" class="form-label">Section ID</label>
-                  <input type="text" class="form-control" id="seID" aria-describedby="nameHelp" name="seID">
-                  <div id="nameHelp" class="form-text">Enter the Section's ID.</div>
-                  <label for="courseID" class="form-label">Course ID</label>
-                  <input type="text" class="form-control" id="cID" aria-describedby="nameHelp" name="cID">
-                  <div id="nameHelp" class="form-text">Enter the Course's ID.</div>
+                   <label for="courseID" class="form-label">Course ID</label>
+                   <input type="text" class="form-control" id="cID" aria-describedby="nameHelp" name="cID">
+                   <div id="nameHelp" class="form-text">Enter the Section Course's ID</div>                          
                 </div>
                 <input type="hidden" name="saveType" value="Add">
                 <button type="submit" class="btn btn-primary">Submit</button>
