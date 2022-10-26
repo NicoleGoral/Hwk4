@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   switch ($_POST['saveType']) {
     case 'Add':
-      $sqlAdd = "insert into Student (studentName) value (?)";
+      $sqlAdd = "insert into Student (studentName, studentID, gradeLevel, courseID) value (?,?,?,?)";
       $stmtAdd = $conn->prepare($sqlAdd);
       $stmtAdd->bind_param("s", $_POST['sName']);
       $stmtAdd->execute();
@@ -136,6 +136,15 @@ $conn->close();
                   <label for="studentName" class="form-label">Name</label>
                   <input type="text" class="form-control" id="supervisorName" aria-describedby="nameHelp" name="sName">
                   <div id="nameHelp" class="form-text">Enter the student's name.</div>
+                  <label for="studentID" class="form-label">Student ID</label>
+                  <input type="text" class="form-control" id="studentID" aria-describedby="nameHelp" name="sID">
+                  <div id="nameHelp" class="form-text">Enter the student's ID.</div>
+                  <label for="gradeLevel" class="form-label">Grade Level</label>
+                  <input type="text" class="form-control" id="gradeLevel" aria-describedby="nameHelp" name="sGL">
+                  <div id="nameHelp" class="form-text">Enter the student's grade level.</div>
+                  <label for="courseID" class="form-label">Course ID</label>
+                  <input type="text" class="form-control" id="courseID" aria-describedby="nameHelp" name="cID">
+                  <div id="nameHelp" class="form-text">Enter the student's course ID.</div>
                 </div>
                 <input type="hidden" name="saveType" value="Add">
                 <button type="submit" class="btn btn-primary">Submit</button>
