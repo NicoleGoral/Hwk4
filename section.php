@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     case 'Add':
       $sqlAdd = "insert into section (courseID, sectionID, sectionNumber) value (?,?,?)";
       $stmtAdd = $conn->prepare($sqlAdd);
-      $stmtAdd->bind_param("si", $_POST['sNum'], $_POST['cID']);
+      $stmtAdd->bind_param("si", $_POST['sNum'], $_POST['cID'], $_POST['seID']);
       $stmtAdd->execute();
       echo '<div class="alert alert-success" role="alert">New Section added.</div>';
       break;
