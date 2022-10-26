@@ -78,10 +78,7 @@ if ($result->num_rows > 0) {
                         <div class="mb-3">
                           <label for="editInstructor<?=$row["instructorID"]?>Name" class="form-label">Instructor Name</label>
                           <input type="text" class="form-control" id="editInstructor<?=$row["instructorID"]?>Name" aria-describedby="editInstructor<?=$row["instructorID"]?>Help" name="iName" value="<?=$row['instructorName']?>">
-                          <div id="editInstructor<?=$row["instructorID"]?>Help" class="form-text">Enter the Instructor's name.</div>
-                          <label for="instructorID" class="form-label">Instructor ID</label>
-                          <input type="text" class="form-control" id="iID" aria-describedby="nameHelp" name="iID" value="<?=$row['instructorID']?>">
-                          <div id="nameHelp" class="form-text">Enter the Instructor's ID</div>
+                          <div id="editInstructor<?=$row["instructorID"]?>Help" class="form-text">Enter the Instructor's name.</div>                          
                           <label for="courseID" class="form-label">course ID</label>
                           <input type="text" class="form-control" id="cID" aria-describedby="nameHelp" name="cID" value="<?=$row['courseID']?>">
                           <div id="nameHelp" class="form-text">Enter the course ID</div>
