@@ -134,12 +134,12 @@ $conn->close();
                   <label for="coursePrefix" class="form-label">Course Prefix</label>
                   <input type="text" class="form-control" id="cPre" aria-describedby="nameHelp" name="cPre">
                   <div id="nameHelp" class="form-text">Enter the Course's Prefix.</div>
-                   <label for="courseNumber" class="form-label">Course Number</label>
-                          <input type="text" class="form-control" id="cNum" aria-describedby="nameHelp" name="cNum" value="<?=$row['courseNumber']?>">
+                          <label for="courseNumber" class="form-label">Course Number</label>
+                          <input type="text" class="form-control" id="cNum" aria-describedby="nameHelp" name="cNum">
                           <div id="nameHelp" class="form-text">Enter the Course's Number</div>
                           <label for="courseDescription" class="form-label">Course Description</label>
-                          <input type="text" class="form-control" id="cDes" aria-describedby="nameHelp" name="cDes" value="<?=$row['courseDescription']?>">
-                          <div id="nameHelp" class="form-text">Enter the Course Description</div
+                          <input type="text" class="form-control" id="cDes" aria-describedby="nameHelp" name="cDes">
+                          <div id="nameHelp" class="form-text">Enter the course's description</div>
                 </div>
                 <input type="hidden" name="saveType" value="Add">
                 <button type="submit" class="btn btn-primary">Submit</button>
