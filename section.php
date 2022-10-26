@@ -76,7 +76,7 @@ if ($result->num_rows > 0) {
                           <div class="mb-3">
                           
                           <?php
-                      
+                      ?>
                             </select>
                         </div>
                         <input type="hidden" name="seID" value="<?=$row['sectionID']?>">
