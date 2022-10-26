@@ -14,21 +14,21 @@ if ($conn->connect_error) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   switch ($_POST['saveType']) {
     case 'Add':
-      $sqlAdd = "insert into Student (studentName, studentID, gradeLevel, courseID) value (?,?,?,?)";
+      $sqlAdd = "insert into student (studentName, studentID, gradeLevel, courseID) value (?,?,?,?)";
       $stmtAdd = $conn->prepare($sqlAdd);
       $stmtAdd->bind_param("s", $_POST['sName']);
       $stmtAdd->execute();
       echo '<div class="alert alert-success" role="alert">New Student added.</div>';
       break;
     case 'Edit':
-      $sqlEdit = "update Student set studentName=? where studentID=?";
+      $sqlEdit = "update student set studentName=? where studentID=?";
       $stmtEdit = $conn->prepare($sqlEdit);
       $stmtEdit->bind_param("si", $_POST['sName'], $_POST['sID']);
       $stmtEdit->execute();
       echo '<div class="alert alert-success" role="alert">Student edited.</div>';
       break;
     case 'Delete':
-      $sqlDelete = "delete from Student where studentID=?";
+      $sqlDelete = "delete from student where studentID=?";
       $stmtDelete = $conn->prepare($sqlDelete);
       $stmtDelete->bind_param("i", $_POST['sID']);
       $stmtDelete->execute();
