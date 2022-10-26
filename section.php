@@ -5,6 +5,8 @@
       <th>Course ID</th>
       <th>Section ID</th>
       <th>Section Number</th>
+      <th>  </th>
+      <th>  </th>
     </tr>
   </thead>
   <tbody>
